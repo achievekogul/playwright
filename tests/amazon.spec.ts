@@ -140,7 +140,7 @@ test('drag', async ({ page }) => {
 test.only('hover', async ({ page }) => {
 
     await page.goto('https://testautomationpractice.blogspot.com/p/download-files_25.html');
-    await page.getByText('Point Me', {
+    await page.getByText('Point M', {
         exact: true
     }).hover();
    // await page.pause();

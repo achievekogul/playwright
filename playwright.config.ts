@@ -12,7 +12,7 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
- timeout: 60000, 
+  timeout: 60000,
 
   testDir: './tests',
   /* Run tests in files in parallel */
@@ -21,6 +21,7 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
+  // retries:2,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
@@ -29,14 +30,14 @@ export default defineConfig({
   use: {
     screenshot: 'only-on-failure',
     video: 'on',
-    
+
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-     headless: false,
+    headless: false,
     trace: 'retain-on-failure',
-        launchOptions: {
+    launchOptions: {
       // 1
       args: ["--start-maximized"],
     },
