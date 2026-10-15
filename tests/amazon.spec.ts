@@ -1,4 +1,4 @@
-import { test,expect } from '@playwright/test';
+import { test, expect, defineConfig } from '@playwright/test';
 
 
 test('click on ebay', async ({ page }) => {
@@ -20,7 +20,7 @@ test('click on opentab', async ({ page, context }) => {
 
 test('click on opentab1', async ({ page, context }) => {
     await page.goto('https://testautomationpractice.blogspot.com/p/playwrightpractice.html');
-    
+
     const [newPage] = await Promise.all([
         context.waitForEvent('page'),
         page.getByRole('button', { name: 'New Tab' }).click(),
@@ -86,70 +86,99 @@ test('dialog accept1', async ({ page }) => {
 test('dialog accept', async ({ page }) => {
     await page.goto('https://testautomationpractice.blogspot.com/p/playwrightpractice.html');
     page.on('dialog', async (dialog) => {
-         if(dialog.type()==='beforeunload'){
-              await dialog.accept();
-         }
-         else{
-             console.log('Alert message:', dialog.message());
-              await dialog.dismiss();
-         }
+        if (dialog.type() === 'beforeunload') {
+            await dialog.accept();
+        }
+        else {
+            console.log('Alert message:', dialog.message());
+            await dialog.dismiss();
+        }
     }
     )
 });
 
 
-test('upload files',async ({page})=> {
+test('upload files', async ({ page }) => {
 
- await page.goto('https://testautomationpractice.blogspot.com/p/playwrightpractice.html');   
-await  page.locator('#singleFileInput').setInputFiles('testdata/Lavanya.pdf');
- await page.pause();
+    await page.goto('https://testautomationpractice.blogspot.com/p/playwrightpractice.html');
+    await page.locator('#singleFileInput').setInputFiles('testdata/Lavanya.pdf');
+    await page.pause();
 })
 
-test('upload multiple files',async ({page})=> {
+test('upload multiple files', async ({ page }) => {
 
- await page.goto('https://testautomationpractice.blogspot.com/p/playwrightpractice.html');   
-await  page.locator('#multipleFilesInput').setInputFiles(['testdata/Lavanya.pdf', 'testdata/Lavanya.pdf'
-]);
- await page.pause();
+    await page.goto('https://testautomationpractice.blogspot.com/p/playwrightpractice.html');
+    await page.locator('#multipleFilesInput').setInputFiles(['testdata/Lavanya.pdf', 'testdata/Lavanya.pdf'
+    ]);
+    await page.pause();
 })
 
 
-test('download a file', async({page})=>{
-  await page.goto('https://rahulshettyacademy.com/upload-download-test/');
+test('download a file', async ({ page }) => {
+    await page.goto('https://rahulshettyacademy.com/upload-download-test/');
 
- const [download] = await Promise.all([
-    page.waitForEvent('download'),
-    page.getByRole('button', { name: 'Download' }).click()
-  ])
-      console.log('File name:', download.suggestedFilename());
-      await download.saveAs('testdata/rename.xlsx'+ download.suggestedFilename());
+    const [download] = await Promise.all([
+        page.waitForEvent('download'),
+        page.getByRole('button', { name: 'Download' }).click()
+    ])
+    console.log('File name:', download.suggestedFilename());
+    await download.saveAs('testdata/rename.xlsx' + download.suggestedFilename());
 
-      expect(download.suggestedFilename()).toContain('.xlsx');
-
-});
-
-test('drag', async ({page})=>{
-
-await page.goto('https://testautomationpractice.blogspot.com/p/download-files_25.html');
-await page.locator('#draggable').dragTo(page.locator('#droppable'));
-await page.pause();
+    expect(download.suggestedFilename()).toContain('.xlsx');
 
 });
 
+test('drag', async ({ page }) => {
 
-test('hover', async ({page})=>{
+    await page.goto('https://testautomationpractice.blogspot.com/p/download-files_25.html');
+    await page.locator('#draggable').dragTo(page.locator('#droppable'));
+    await page.pause();
 
-await page.goto('https://testautomationpractice.blogspot.com/p/download-files_25.html');
-await page.getByText('Point Me', {
-    exact:true
-}).hover();
-await page.pause();
 });
 
-test.only('screenshot', async ({page})=>{
- await page.goto('https://www.google.com')
 
-  await  page.screenshot({
-        path:'screenshot/test.png'
+test.only('hover', async ({ page }) => {
+
+    await page.goto('https://testautomationpractice.blogspot.com/p/download-files_25.html');
+    await page.getByText('Point Me', {
+        exact: true
+    }).hover();
+   // await page.pause();
+});
+
+test('screenshot', async ({ page }) => {
+
+    const date = Date.now();
+
+    await page.goto('https://www.google.com')
+
+    await page.screenshot({
+        path: `screenshot/test${date}.png`
     });
 })
+
+test('screenshot element', async ({ page }) => {
+
+    Date.now();
+    await page.goto('https://testautomationpractice.blogspot.com/p/playwrightpractice.html')
+
+    const primarybutton = page.getByRole('button', {
+        name: 'Primary Action'
+    });
+
+    await primarybutton.screenshot({ path: 'screenshot/primarybutton.png' });
+});
+
+test('attach screenshot', async ({ page }, testinfo) => {
+page.goto('https://www.google.com');
+
+    const screenshot = await page.screenshot();
+
+    testinfo.attach(
+        'screenshot', {
+        body: screenshot,
+        contentType: 'image/png'
+    }
+
+    );
+});
