@@ -137,14 +137,19 @@ await page.pause();
 });
 
 
-test.only('hover', async ({page})=>{
+test('hover', async ({page})=>{
 
 await page.goto('https://testautomationpractice.blogspot.com/p/download-files_25.html');
 await page.getByText('Point Me', {
     exact:true
 }).hover();
 await page.pause();
-
-
-
 });
+
+test.only('screenshot', async ({page})=>{
+ await page.goto('https://www.google.com')
+
+  await  page.screenshot({
+        path:'screenshot/test.png'
+    });
+})
