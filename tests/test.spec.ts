@@ -33,6 +33,7 @@ test('click the card', async ({ browser, page }) => {
 
   page.frames();
   page.frames();
+  page.frames();
 });
 
 
