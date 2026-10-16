@@ -12,7 +12,7 @@ test('To launch browser', async () => {
 });
 
 
-test.only('brower in fixture', async ({ page }) => {
+test('brower in fixture', async ({ page }) => {
 
     await page.goto("https://eventhub.rahulshettyacademy.com/login");
 
