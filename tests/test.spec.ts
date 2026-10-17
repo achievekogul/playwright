@@ -52,7 +52,7 @@ test('click the card', async ({ browser, page }) => {
 
 
 
-test.only('To test login functionality', async ({ page }) => {
+test('To test login functionality', async ({ page }) => {
   const text = await page.locator("").filter({ hasText: 'iphone' });
 
   await text.getByRole('button', { name: 'Add To cart' });

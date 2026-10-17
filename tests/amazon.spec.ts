@@ -137,7 +137,7 @@ test('drag', async ({ page }) => {
 });
 
 
-test.only('hover', async ({ page }) => {
+test('hover', async ({ page }) => {
 
     await page.goto('https://testautomationpractice.blogspot.com/p/download-files_25.html');
     await page.getByText('Point M', {
