@@ -6,19 +6,17 @@ if (true) {
 
     var username: string = "kogul";
     let subject: string = "electronics";
-    const id:string="123";
-
-
-
-
+    const id: string = "123";
 
     var username: string = "kogul";
     let subject: string = "electronics";
-    const id:string="123";
+    const id: string = "123";
 
-    subject="test";
-    id='letter';
+    username = "gear";
+    subject = "test";
+    id = 'letter';
 }
+
 console.log(username);
 //console.log(subject);
 //console.log(id);
