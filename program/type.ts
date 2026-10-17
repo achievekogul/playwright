@@ -135,7 +135,7 @@ function greet(name:String){
 
 }
 
-function add(one:number, two:number){
+function add1(one:number, two:number){
    return one+two;
 }
 
