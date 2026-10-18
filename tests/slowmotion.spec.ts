@@ -3,6 +3,7 @@ import { chromium, test } from '@playwright/test';
 test('dialog accept', async () => {
 
     const browser = await chromium.launch({
+          headless: true,
         slowMo: 3000,
       //  args: ['--start-maximized']
     });
