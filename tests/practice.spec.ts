@@ -8,7 +8,7 @@ test('To launch browser', async () => {
 
     const context = await browser.newContext();
     const page = await context.newPage();
-    await page.goto("https://wwww.google.com")
+    await page.goto("https://www.google.com")
 });
 
 

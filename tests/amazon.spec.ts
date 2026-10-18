@@ -10,13 +10,13 @@ test('click on ebay', async ({ page }) => {
     await page.locator('a').filter({ has: page.getByText("Men's costumes", { exact: true }) }).click();
 });
 
-test('click on opentab', async ({ page, context }) => {
-    await page.goto('https://www.ebay.com/');
+// test('click on opentab', async ({ page, context }) => {
+//     await page.goto('https://www.ebay.com/');
 
-    const [newpage] = await Promise.all([
-        context.waitForEvent('page'),
-        page.click('')]);
-});
+//     const [newpage] = await Promise.all([
+//         context.waitForEvent('page'),
+//         page.click('')]);
+// });
 
 test('click on opentab1', async ({ page, context }) => {
     await page.goto('https://testautomationpractice.blogspot.com/p/playwrightpractice.html');
@@ -141,9 +141,9 @@ test('hover', async ({ page }) => {
 
     await page.goto('https://testautomationpractice.blogspot.com/p/download-files_25.html');
     await page.getByText('Point M', {
-        exact: true
+        //exact: true
     }).hover();
-   // await page.pause();
+    // await page.pause();
 });
 
 test('screenshot', async ({ page }) => {
@@ -170,7 +170,7 @@ test('screenshot element', async ({ page }) => {
 });
 
 test('attach screenshot', async ({ page }, testinfo) => {
-page.goto('https://www.google.com');
+    page.goto('https://www.google.com');
 
     const screenshot = await page.screenshot();
 
