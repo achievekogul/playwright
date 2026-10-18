@@ -40,3 +40,5 @@ return total;
  const tet =(test:string):string =>{
     return "null";
 }
+
+
