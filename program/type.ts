@@ -145,3 +145,5 @@ function employeeDet(name:string, id:number, salary:number): void{
 }
 
 console.log(employeeDet("kogul", 101, 400));
+
+
