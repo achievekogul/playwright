@@ -102,7 +102,7 @@ test('upload files', async ({ page }) => {
 
     await page.goto('https://testautomationpractice.blogspot.com/p/playwrightpractice.html');
     await page.locator('#singleFileInput').setInputFiles('testdata/Lavanya.pdf');
-    await page.pause();
+    //await page.pause();
 })
 
 test('upload multiple files', async ({ page }) => {
@@ -110,7 +110,7 @@ test('upload multiple files', async ({ page }) => {
     await page.goto('https://testautomationpractice.blogspot.com/p/playwrightpractice.html');
     await page.locator('#multipleFilesInput').setInputFiles(['testdata/Lavanya.pdf', 'testdata/Lavanya.pdf'
     ]);
-    await page.pause();
+    //await page.pause();
 })
 
 
@@ -132,7 +132,7 @@ test('drag', async ({ page }) => {
 
     await page.goto('https://testautomationpractice.blogspot.com/p/download-files_25.html');
     await page.locator('#draggable').dragTo(page.locator('#droppable'));
-    await page.pause();
+ //   await page.pause();
 
 });
 

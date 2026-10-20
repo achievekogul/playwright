@@ -11,4 +11,3 @@ count=count+value1;
 });
 
 console.log(count>1? "this is average":"this is not average");
-
