@@ -37,5 +37,13 @@ export class LoginPage {
 
         const addToCart = button.getByRole('button', { name: 'Add to cart' });
         await addToCart.click();
+
+            
+    const cart1 = await this.page.locator('.tes').allInnerTexts();
+
+    const v = cart1.map(p => parseFloat(p.replace('S', " ")));
+    v.filter(p => p > 20);
     }
+
+
 }
